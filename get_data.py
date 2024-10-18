@@ -17,8 +17,6 @@ warnings.filterwarnings('ignore')
 
 from sklearn.neighbors import KDTree
 
-
-
 # 公共OSS AK
 bucket_name = 'sf-2023'
 oss_endpoint = 'http://oss-cn-guangzhou-nfdw-d01-a.pdcc-cloud-inc.cn'
