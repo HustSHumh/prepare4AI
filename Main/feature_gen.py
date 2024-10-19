@@ -157,6 +157,15 @@ def gen_feature():
 
 
 
+# onehot
+for col in ['站点编号']:
+    logging.info(f"特征{col}的onehot")
+    unique_value = total_df[col].unique()
+    for value in unique_value:
+        total_df[col + "_" + str(value)] = (total_df[col] == value)
+    total_df.drop([col], axis=1, inplace=True)
+
+
 
 
 
