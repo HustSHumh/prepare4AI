@@ -34,7 +34,7 @@ def clean_data():
     df['datetime'] = pd.to_datetime(df['datetime'], format=f'%Y-%m-%d %H:%M%S').tz_localize('Asia/shanghai')
     # 数据转换，浮点数转换
     df['num'] = pd.to_numeric(df['num'], errors='coerce')
-    
+
     df['num'] = df['num'].apply(lambda x: round(x, 4))
     # 最大值获取，最大值剔除
     df['num'] = df['num'].nlargest(3)
@@ -48,28 +48,10 @@ def clean_data():
 
     # 数据列的drop
     df.drop(columns=['col'], inplace=True)
- 
 
     # 数据插值
     # 1、线性插值
     df['num'] = df['num'].interpolate(limit=3)
     # 2、填充
     df['num'] = df['num'].ffill()
-
-
-    
-
-
-
-# 特征获取
-def get_feature():
-    # 日期特征
-    df['dayofyear'] = df['time'].dt.dayofyear
-    df['weekofyear'] = df['time'].dt.weekofyear
-    df['month'] = df['time'].dt.month
-    df['year'] = df['time'].dt.year
-    df['day'] = df['time'].dt.day
-    df['hour'] = df['time'].dt.hour
-    df['minute'] = df['time'].dt.minute
-    df["季节"] = df["时间"].dt.quarter
 
